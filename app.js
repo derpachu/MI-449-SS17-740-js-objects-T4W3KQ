@@ -8,7 +8,7 @@ var jokes = {}
 
 var jokestored = window.localStorage.getItem('jokestorage')
 
-if (jokestored === null || jokes === undefined) {
+if (!jokestored) {
   jokes['the horse'] = {
     setup: 'A horse walks into the bar. The bartender asks...',
     punchline: 'Why the long face?'
@@ -60,9 +60,7 @@ var addJoke = function () {
   var label = document.getElementById('title').value
   var start = document.getElementById('setup').value
   var end = document.getElementById('end').value
-  if (label === null || label === undefined || label === '' ||
-    start === null || start === undefined || start === '' ||
-    end === null || end === undefined || end === '') {
+  if (!label || !start || !end) {
     window.alert("joke isn't completed")
   } else {
     jokes[label] = {
